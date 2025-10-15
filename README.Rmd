@@ -48,13 +48,9 @@ av <- av %>%
     times = rowSums(across(c(Death1, Death2, Death3, Death4, Death5)) == "YES")
   )
 
-print(av)
 
 deaths <- av |> pivot_longer(cols = starts_with("Death"), values_to = "Death") ## |> mutate(Time = parse_number(Time))
 
-
-
-?pivot_longer
 
 deaths <- deaths %>% 
   distinct(Name.Alias, .keep_all = TRUE)
