@@ -38,9 +38,21 @@ library(readr)
 
 Get the data into a format where the five columns for Death[1-5] are replaced by two columns: Time, and Death. Time should be a number between 1 and 5 (look into the function `parse_number`); Death is a categorical variables with values "yes", "no" and "". Call the resulting data set `deaths`. 
 
+```{r}
+#Use Start With to skip the middle columns and get to the columsn that start with Death
+
+deaths <- av |> pivot_longer(cols = starts_with("Death"), names_to = "Time", values_to = "Death") |> mutate(Time = parse_number(Time))
+
+head(deaths)
+
+```
+
 Similarly, deal with the returns of characters.
 
 Based on these datasets calculate the average number of deaths an Avenger suffers. 
+
+
+
 
 ## Individually
 
