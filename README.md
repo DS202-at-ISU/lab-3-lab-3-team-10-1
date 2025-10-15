@@ -98,7 +98,7 @@ Avenger suffers.
 
 ## Individually
 
-Vaishnavi
+Vaishnavi Devi
 
 For each team member, copy this part of the report.
 
