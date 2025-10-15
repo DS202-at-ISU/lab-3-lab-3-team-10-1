@@ -83,6 +83,7 @@ library(dplyr)
 
 ``` r
 library(ggplot2)
+library(readr)
 ```
 
 Get the data into a format where the five columns for Death\[1-5\] are
