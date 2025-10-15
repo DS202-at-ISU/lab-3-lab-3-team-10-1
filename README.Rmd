@@ -75,6 +75,8 @@ Based on these datasets calculate the average number of deaths an Avenger suffer
 
 ## Individually
 
+Vaishnavi Devi
+
 For each team member, copy this part of the report. 
 
 Each team member picks one of the statements in the FiveThirtyEight [analysis](https://fivethirtyeight.com/features/avengers-death-comics-age-of-ultron/) and fact checks it based on the data. Use dplyr functionality whenever possible.
