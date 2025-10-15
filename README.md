@@ -103,7 +103,7 @@ av <- av %>%
   )
 
 
-deaths <- av |> pivot_longer(cols = starts_with("Death"), values_to = "Death") ## |> mutate(Time = parse_number(Time))
+deaths <- av |> pivot_longer(cols = starts_with("Death"), values_to = "Death")
 
 
 deaths <- deaths %>% 
@@ -112,31 +112,46 @@ deaths <- deaths %>%
 deaths <- deaths %>%
   select(-c(name, Return1, Return2, Return3, Return4, Return5))
 
-print(deaths)
+print(deaths$times)
 ```
 
-    ## # A tibble: 163 × 13
-    ##    URL                Name.Alias Appearances Current. Gender Probationary.Introl
-    ##    <chr>              <chr>            <int> <chr>    <chr>  <chr>              
-    ##  1 http://marvel.wik… "Henry Jo…        1269 YES      MALE   ""                 
-    ##  2 http://marvel.wik… "Janet va…        1165 YES      FEMALE ""                 
-    ##  3 http://marvel.wik… "Anthony …        3068 YES      MALE   ""                 
-    ##  4 http://marvel.wik… "Robert B…        2089 YES      MALE   ""                 
-    ##  5 http://marvel.wik… "Thor Odi…        2402 YES      MALE   ""                 
-    ##  6 http://marvel.wik… "Richard …         612 YES      MALE   ""                 
-    ##  7 http://marvel.wik… "Steven R…        3458 YES      MALE   ""                 
-    ##  8 http://marvel.wik… "Clinton …        1456 YES      MALE   ""                 
-    ##  9 http://marvel.wik… "Pietro M…         769 YES      MALE   ""                 
-    ## 10 http://marvel.wik… "Wanda Ma…        1214 YES      FEMALE ""                 
-    ## # ℹ 153 more rows
-    ## # ℹ 7 more variables: Full.Reserve.Avengers.Intro <chr>, Year <int>,
-    ## #   Years.since.joining <int>, Honorary <chr>, Notes <chr>, times <dbl>,
-    ## #   Death <chr>
+    ##   [1] 1 1 1 1 2 0 1 2 1 1 1 0 0 1 0 1 1 0 2 1 2 1 1 0 0 0 0 0 0 3 0 0 5 0 1 0 0
+    ##  [38] 0 1 1 1 0 0 0 1 0 0 1 0 1 1 2 2 2 1 2 1 0 0 1 0 1 0 0 0 0 1 1 0 0 2 0 0 1
+    ##  [75] 0 2 0 1 1 0 0 0 2 0 0 1 1 1 2 0 0 0 0 1 0 1 0 0 0 2 0 0 0 0 0 0 1 1 0 1 0
+    ## [112] 1 0 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 1 1
+    ## [149] 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0
+
+``` r
+print(deaths$Death)
+```
+
+    ##   [1] "YES" "YES" "YES" "YES" "YES" "NO"  "YES" "YES" "YES" "YES" "YES" "NO" 
+    ##  [13] "NO"  "YES" "NO"  "YES" "YES" "NO"  "YES" "YES" "YES" "YES" "YES" "NO" 
+    ##  [25] "NO"  "NO"  "NO"  "NO"  "NO"  "YES" "NO"  "NO"  "YES" "NO"  "YES" "NO" 
+    ##  [37] "NO"  "NO"  "YES" "YES" "YES" "NO"  "NO"  "NO"  "YES" "NO"  "NO"  "YES"
+    ##  [49] "NO"  "YES" "YES" "YES" "YES" "YES" "YES" "YES" "YES" "NO"  "NO"  "YES"
+    ##  [61] "NO"  "YES" "NO"  "NO"  "NO"  "NO"  "YES" "YES" "NO"  "NO"  "YES" "NO" 
+    ##  [73] "NO"  "YES" "NO"  "YES" "NO"  "YES" "YES" "NO"  "NO"  "NO"  "YES" "NO" 
+    ##  [85] "NO"  "YES" "YES" "YES" "YES" "NO"  "NO"  "NO"  "NO"  "YES" "NO"  "YES"
+    ##  [97] "NO"  "NO"  "NO"  "YES" "NO"  "NO"  "NO"  "NO"  "NO"  "NO"  "YES" "YES"
+    ## [109] "NO"  "YES" "NO"  "YES" "NO"  "YES" "NO"  "NO"  "NO"  "NO"  "NO"  "NO" 
+    ## [121] "NO"  "NO"  "NO"  "NO"  "YES" "YES" "NO"  "NO"  "NO"  "NO"  "NO"  "NO" 
+    ## [133] "NO"  "NO"  "NO"  "NO"  "NO"  "YES" "NO"  "NO"  "NO"  "NO"  "NO"  "YES"
+    ## [145] "NO"  "YES" "YES" "YES" "NO"  "NO"  "NO"  "NO"  "NO"  "NO"  "NO"  "YES"
+    ## [157] "NO"  "NO"  "NO"  "NO"  "NO"  "NO"  "NO"
 
 Similarly, deal with the returns of characters.
 
 Based on these datasets calculate the average number of deaths an
 Avenger suffers.
+
+``` r
+avgDeaths = mean(deaths$times)
+
+print(avgDeaths)
+```
+
+    ## [1] 0.5092025
 
 ## Individually
 
@@ -165,3 +180,61 @@ fact-checking endeavor.
 
 Upload your changes to the repository. Discuss and refine answers as a
 team.
+
+## Individually
+
+Owen Arnold
+
+For each team member, copy this part of the report.
+
+Each team member picks one of the statements in the FiveThirtyEight
+[analysis](https://fivethirtyeight.com/features/avengers-death-comics-age-of-ultron/)
+and fact checks it based on the data. Use dplyr functionality whenever
+possible.
+
+### FiveThirtyEight Statement
+
+> Quote the statement you are planning to fact-check.
+
+“Out of 173 listed Avengers, my analysis found that 69 had died at least
+one time after they joined the team.5 That’s about 40 percent of all
+people who have ever signed on to the team.”
+
+### Include the code
+
+Make sure to include the code to derive the (numeric) fact for the
+statement
+
+``` r
+allDead <- deaths %>%
+  filter(Death == "YES")
+
+numDead = nrow(allDead)
+numTotal = nrow(deaths)
+
+percentDead = (numDead / numTotal) * 100
+
+print(numDead)
+```
+
+    ## [1] 64
+
+``` r
+print(percentDead)
+```
+
+    ## [1] 39.2638
+
+### Include your answer
+
+Include at least one sentence discussing the result of your
+fact-checking endeavor.
+
+Upload your changes to the repository. Discuss and refine answers as a
+team.
+
+### Response
+
+The claim is true that about %40 of avengers die, my calculations
+yielded %39.26. The statement that 69 have died could be a flaw in the
+dataset, some avengers may not be included.
